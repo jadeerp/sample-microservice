@@ -9,31 +9,32 @@ spec:
   selector:
     matchLabels:
       app: sample
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
   template:
     metadata:
-      name: sample
       labels:
         app: sample
     spec:
       containers:
-        - name: obededoreto/sample-mservice
+        - name: sample
+          image: obededoreto/sample-mservice
           ports:
             - containerPort: 3000
-          env:
-            - name: PORT
-              value: '3000'
+              protocol: TCP
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: sample-srv
+  name: sample-svc
+  labels:
+    app: sample-srv
 spec:
-  type: ClusterIP
   selector:
     app: sample
+  type: ClusterIP
   ports:
-    - name: sample
+    - port: 3000
       protocol: TCP
-      port: 3000
-      targetPort: 3000
-    
