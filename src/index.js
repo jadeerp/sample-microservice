@@ -12,5 +12,5 @@ app.get('/', (req, res, next) => {
 })
 
 app.listen(port, host, () => {
-  console.log("App is running on ", port)
+  console.log("Sample Microservice is running on ", port)
 });
