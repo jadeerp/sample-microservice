@@ -35,5 +35,5 @@ spec:
     - name: sample
       protocol: TCP
       port: 3000
-      targetPorT: 3000
+      targetPort: 3000
     
