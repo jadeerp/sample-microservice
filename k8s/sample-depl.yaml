@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-depl
+  labels:
+    app: sample-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample
+  template:
+    metadata:
+      name: sample
+      labels:
+        app: sample
+    spec:
+      containers:
+        - name: obededoreto/sample-mservice
+          ports:
+            - containerPort: 3000
+          env:
+            - name: PORT
+              value: '3000'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: sample
+  ports:
+    - name: sample
+      protocol: TCP
+      port: 3000
+      targetPorT: 3000
+    
