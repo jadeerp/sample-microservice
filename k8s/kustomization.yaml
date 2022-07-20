@@ -4,5 +4,5 @@ resources:
 - git@github.com:jadeerp/sample-microservice/k8s/main/sample-depl.yaml
 namespace: default
 images:
-- name: ifextech/jadeerp-stock-service
+- name: obededoreto/sample-mservice
   newTag: latest
